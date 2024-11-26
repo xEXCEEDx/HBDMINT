@@ -37,10 +37,10 @@ const UnlockComponent: React.FC<UnlockProps> = ({ onUnlock }) => {
 
   const handleUnlock = () => {
     if (
-      inputValues.input1 === "m" &&
-      inputValues.input2 === "i" &&
-      inputValues.input3 === "n" &&
-      inputValues.input4 === "t"
+      inputValues.input1.toLowerCase() === "m" &&
+      inputValues.input2.toLowerCase() === "i" &&
+      inputValues.input3.toLowerCase() === "n" &&
+      inputValues.input4.toLowerCase() === "t"
     ) {
       setIsUnlocked(true); // เมื่อปลดล็อกสำเร็จ ตั้งค่า isUnlocked เป็น true
       onUnlock(); // Notify parent component
