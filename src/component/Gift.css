@@ -1,0 +1,167 @@
+/* Style สำหรับปุ่ม toggle */
+.toggle-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 12px 24px;
+  font-size: 1.3rem;
+  background: linear-gradient(90deg, #ff4e50, #f9d423); /* สีแดง-ทอง */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.toggle-button:hover {
+  background: linear-gradient(90deg, #f9d423, #ff4e50); /* สีทอง-แดง */
+  transform: scale(1.1);
+  box-shadow: 0px 6px 18px rgba(255, 78, 80, 0.4);
+}
+
+.giftbox{
+  padding-top: 10rem;
+}
+/* Animation for fading in the message */
+.message-content {
+  line-height: 1.8;
+  font-size: 1.2rem;
+  color: #333;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  animation: fadeInText 3s ease-in-out forwards;
+}
+
+.message-content.show {
+  opacity: 1;
+  max-height: 300px;
+}
+
+.message-content br {
+  margin-bottom: 10px;
+}
+
+/* ปรับสไตล์สำหรับกล่องวิดีโอ */
+.video-container {
+  text-align: center;
+  margin: 20px auto;
+  width: 85%;
+  max-width: 400px; /* จำกัดความกว้างสูงสุด */
+}
+
+.gift-video {
+  width: 100%; /* วิดีโอปรับขนาดอัตโนมัติตาม container */
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* เพิ่มความสวยงาม */
+  background: #f7f9fa;
+}
+
+/* ปรับให้ทุกส่วนอยู่กึ่งกลาง */
+.gift-box, .video-container, .gift-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+
+/* Responsive สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+  .video-container {
+    max-width: 90%;
+  }
+
+  .gift-message-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .gift-message {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .toggle-button {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Animation for fade-in effect (ข้อความค่อยๆ แสดง) */
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 300px;
+  }
+}
+
+/* Center the content and button */
+.gift-box {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.gift-message-container {
+  background-color: #fff; /* สีพื้นหลังขาว */
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  animation: slideIn 1s ease-in-out;
+  border: 2px solid #ff4e50; /* กรอบสีแดง */
+}
+
+.gift-message {
+  background-color: #f7f9fa; /* สีพื้นหลังขาว-เทา */
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.gift-message-container .toggle-button {
+  margin-top: 20px;
+}
+
+/* Animation for slide-in effect */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .gift-message-container {
+    width: 90%;
+  }
+
+  .gift-message {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .message-content {
+    font-size: 1rem;
+  }
+}

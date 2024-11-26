@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Itim&display=swap');
+
+* {
+  font-family: 'Itim', cursive;
+  font-weight: 900;
+  font-style: normal;
+}
+h5 {
+  margin-top: 5rem;
+  font-size: 1.7rem;
+  animation: christmasColor 3s infinite alternate; /* ใช้ animation */
+}
+
+/* กำหนดการเคลื่อนไหวของสี */
+@keyframes christmasColor {
+  0% {
+    color: #229f84; /* สีแดง (Red) */
+  }
+  50% {
+    color: #008000; /* สีเขียว (Green) */
+  }
+  100% {
+    color: #ff0000; /* สีแดง (Red) */
+  }
+}
