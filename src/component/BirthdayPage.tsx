@@ -25,11 +25,17 @@ const BirthdayUnlockPage: React.FC = () => {
         }
     
         // ตรวจสอบการ Unlock
-        if (inputValues.input1 === "m" && inputValues.input2 === "i" && inputValues.input3 === "n" && inputValues.input4 === "t") {
-          setIsUnlocked(true);
-        } else {
-          setIsUnlocked(false);
-        }
+if (
+  inputValues.input1.toLowerCase() === "m" &&
+  inputValues.input2.toLowerCase() === "i" &&
+  inputValues.input3.toLowerCase() === "n" &&
+  inputValues.input4.toLowerCase() === "t"
+) {
+  setIsUnlocked(true);
+} else {
+  setIsUnlocked(false);
+}
+
       };
       const handleUnlock = () => {
         setIsUnlocked(true);

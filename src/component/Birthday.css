@@ -1,15 +1,4 @@
-.unlock-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-  }
-  
-  .unlock-icon {
-    width: 40px; 
-    margin-right: 10px;  
-  }
-  
+
   h6 {
     margin: 0;
     font-size: 18px;
@@ -24,6 +13,19 @@
     height: 100%;
     pointer-events: none; /* Ensure it doesn't block interactions with other elements */
     z-index: -1; /* Place snowfall behind content */
+  }
+  @supports (animation-timeline: view()) {
+    .text {
+      animation: pop-back 300ms var(--ease-bounce-out) forwards;
+    }
+  }
+  
+  @supports (animation-range: entry 80% contain 40%) {
+    .box {
+      animation: trigger steps(1) both, fade linear both;
+      animation-timeline: view();
+      animation-range: entry 80% contain 40%;
+    }
   }
   
   :root {
@@ -141,23 +143,7 @@
     }
   }
   
-  .smile {
-    width: 1em;
-    margin-inline: auto;
-    overflow: hidden;
-    white-space: nowrap;
-    margin-block-end: calc(50vh - 1ex);
-  }
-  
-  .smile div {
-    display: flex;
-    animation: wink 1s steps(1) infinite;
-  }
-  
-  .smile span {
-    display: inline-block;
-    width: 1em;
-  }
+
   .input-box {
    
     margin-bottom: 1rem;
@@ -182,55 +168,7 @@
     outline: none;
     box-shadow: 0 0 5px var(--c2);
   }
-  /* ปรับสไตล์ของปุ่ม */
-  .unlock-button {
-    background: var(--c3);
-    color: white;
-    font-size: 1.1rem;
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* เอฟเฟกต์เมื่อ hover */
-  .unlock-button:hover {
-    background: var(--c2);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* เอฟเฟกต์เมื่อกด */
-  .unlock-button:active {
-    transform: translateY(0);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* เอฟเฟกต์แสงกระพริบบนปุ่ม */
-  .unlock-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transition: all 0.5s;
-    animation: pulse 2s infinite ease-in-out;
-    transform: translate(-50%, -50%);
-  }
-  .unlock-icon {
-    justify-items: center;
-    
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-  }
+
   /* การเคลื่อนไหวแสงกระพริบ */
   @keyframes pulse {
     0% {
@@ -247,13 +185,7 @@
     }
   }
   
-  /* ปรับสไตล์เมื่อปุ่ม disabled */
-  .unlock-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  
+
   /* เพิ่มแอนิเมชั่นเมื่อปุ่ม hover */
   @keyframes hover {
     from,
@@ -359,5 +291,75 @@
     50% {
       translate: 0 var(--hover-offset);
     }
+  }
+  
+
+
+  /* /////unlock//////// */
+  .unlock-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+  /* ปรับสไตล์ของปุ่ม */
+  .unlock-button {
+    background: var(--c3);
+    color: white;
+    font-size: 1.1rem;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  
+.unlock-icon {
+  width: 40px; 
+  margin-right: 10px;  
+}
+/* เอฟเฟกต์เมื่อ hover */
+.unlock-button:hover {
+  background: var(--c2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* เอฟเฟกต์เมื่อกด */
+.unlock-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* เอฟเฟกต์แสงกระพริบบนปุ่ม */
+.unlock-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.5s;
+  animation: pulse 2s infinite ease-in-out;
+  transform: translate(-50%, -50%);
+}
+.unlock-icon {
+  justify-items: center;
+  
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+  /* ปรับสไตล์เมื่อปุ่ม disabled */
+  .unlock-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
   }
   
