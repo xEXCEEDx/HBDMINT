@@ -14,19 +14,6 @@
     pointer-events: none; /* Ensure it doesn't block interactions with other elements */
     z-index: -1; /* Place snowfall behind content */
   }
-  @supports (animation-timeline: view()) {
-    .text {
-      animation: pop-back 300ms var(--ease-bounce-out) forwards;
-    }
-  }
-  
-  @supports (animation-range: entry 80% contain 40%) {
-    .box {
-      animation: trigger steps(1) both, fade linear both;
-      animation-timeline: view();
-      animation-range: entry 80% contain 40%;
-    }
-  }
   
   :root {
     --color: #1e293b;
@@ -362,4 +349,8 @@
     cursor: not-allowed;
     box-shadow: none;
   }
+  
+
+
+
   
