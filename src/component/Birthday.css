@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Keyframes and Animation for Zoom In */
+@keyframes zoomin {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animation-zoomin {
+  animation: zoomin 0.3s ease-in-out;
+}
 
   h6 {
     margin: 0;

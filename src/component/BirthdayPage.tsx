@@ -50,33 +50,31 @@ if (
             <h5>ข้างล่างนี้คืออะไรน้า⬇️ </h5>
             
             </div>
-    
-          <div className="box">
-            <p className="text">รู้มั้ยว่าที่อ่านอยู่คืออะไร?</p>
-          </div>
-          <div className="box">
-            <p className="text">ไม่บอกหรอก</p>
-          </div>
-          <div className="box">
-            <p className="text">ตอนนี้อยากรู้หรือยัง</p>
-          </div>
-          <div className="box">
-            <p className="text">ยังไม่บอกดีกว่า</p>
-          </div>
-          <div className="box">
-            <p className="text">อะอะ บอกก็ได้</p>
-          </div>
-          <div className="box">
-            <p className="text">จะเอาละนะ </p>
-          </div>
-          <div className="box">
-            <p className="text">เตรียมตัว</p>
-          </div>
-          
-          <div className="box">
-          <p className="text">วันนี้คือวันเกิดของใครเอ่ยยยยย</p>
-          </div>
-    
+            <div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">รู้มั้ยว่าที่อ่านอยู่คืออะไร?</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">ไม่บอกหรอก</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">ตอนนี้อยากรู้หรือยัง</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">ยังไม่บอกดีกว่า</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">อะอะ บอกก็ได้</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">จะเอาละนะ</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">เตรียมตัว</p>
+</div>
+<div className="box bg-indigo-100 text-indigo-600 text-base w-40 h-36 font-medium flex items-center justify-center text-center hover:animation-zoomin">
+  <p className="text">วันนี้คือวันเกิดของใครเอ่ยยยยย</p>
+</div>
+
           <div className="boxx">
          
         <p className="text">Unlock to read</p>
