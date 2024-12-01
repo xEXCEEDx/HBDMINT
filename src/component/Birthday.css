@@ -1,364 +1,363 @@
 
-  h6 {
-    margin: 0;
-    font-size: 18px;
-    color: #ffffff;
-  }
-  
-  .snowfall-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Ensure it doesn't block interactions with other elements */
-    z-index: -1; /* Place snowfall behind content */
-  }
-  
+h6 {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.snowfall-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure it doesn't block interactions with other elements */
+  z-index: -1; /* Place snowfall behind content */
+}
+
+:root {
+  --color: #1e293b;
+  --c1: #fbda61;
+  --c2: #ff5acd;
+  --c3: #2563eb;
+  --gradient: linear-gradient(
+    60deg,
+    var(--c3),
+    var(--c2),
+    var(--c1),
+    var(--c2),
+    var(--c3)
+  );
+  --scale-start: 0.5;
+  --scale-end: 1.001;
+  --hover-offset: 5%;
+
+  /* 
+    linear easing generator
+    https://linear-easing-generator.netlify.app/
+  */
+  /* prettier-ignore */
+  --ease-elastic: linear(
+    0, 0.186 2.1%, 0.778 7.2%, 1.027 9.7%, 1.133, 1.212, 1.264, 1.292 15.4%,
+    1.296, 1.294, 1.285, 1.269 18.9%, 1.219 20.9%, 1.062 25.8%, 0.995 28.3%,
+    0.944 31.1%, 0.93, 0.921, 0.92 35.7%, 0.926, 0.94 39.7%, 1.001 47%, 1.014,
+    1.021 52.4%, 1.02 56.4%, 1 65.5%, 0.994 70.7%, 1.001 88.4%, 1
+  );
+  --ease-bounce-out: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion) {
   :root {
-    --color: #1e293b;
-    --c1: #fbda61;
-    --c2: #ff5acd;
-    --c3: #2563eb;
-    --gradient: linear-gradient(
-      60deg,
-      var(--c3),
-      var(--c2),
-      var(--c1),
-      var(--c2),
-      var(--c3)
-    );
-    --scale-start: 0.5;
-    --scale-end: 1.001;
-    --hover-offset: 5%;
-  
-    /* 
-      linear easing generator
-      https://linear-easing-generator.netlify.app/
-    */
-    /* prettier-ignore */
-    --ease-elastic: linear(
-      0, 0.186 2.1%, 0.778 7.2%, 1.027 9.7%, 1.133, 1.212, 1.264, 1.292 15.4%,
-      1.296, 1.294, 1.285, 1.269 18.9%, 1.219 20.9%, 1.062 25.8%, 0.995 28.3%,
-      0.944 31.1%, 0.93, 0.921, 0.92 35.7%, 0.926, 0.94 39.7%, 1.001 47%, 1.014,
-      1.021 52.4%, 1.02 56.4%, 1 65.5%, 0.994 70.7%, 1.001 88.4%, 1
-    );
-    --ease-bounce-out: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --scale-start: var(--scale-end);
+    --ease-elastic: ease-out;
+    --ease-bounce-out: ease-out;
+    --hover-offset: 0;
   }
-  
-  @media (prefers-reduced-motion) {
-    :root {
-      --scale-start: var(--scale-end);
-      --ease-elastic: ease-out;
-      --ease-bounce-out: ease-out;
-      --hover-offset: 0;
-    }
-  }
-  
-  body {
-    padding-inline: 1rem;
-    font-family: system-ui;
-    font-weight: 500;
-    font-size: calc(1rem + 10vmin);
-    text-align: center;
-    overflow-x: hidden;
-  }
-  
-  .intro {
-    display: flex;
-    justify-content: center;
-    gap: 0.2em;
-    font-size: 0.5em;
-    margin-block-start: calc(30vh - 1ex);
-  }
-  
-  .intro span {
-    display: inline-block;
-  }
-  
-  .intro span:first-child {
-    transform-origin: right bottom;
-    animation: wave 250ms 1s ease 3;
-  }
-  
-  .intro span:last-child {
-    animation: hover 500ms linear infinite;
-  }
-  
+}
+
+body {
+  padding-inline: 1rem;
+  font-family: system-ui;
+  font-weight: 500;
+  font-size: calc(1rem + 10vmin);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  gap: 0.2em;
+  font-size: 0.5em;
+  margin-block-start: calc(30vh - 1ex);
+}
+
+.intro span {
+  display: inline-block;
+}
+
+.intro span:first-child {
+  transform-origin: right bottom;
+  animation: wave 250ms 1s ease 3;
+}
+
+.intro span:last-child {
+  animation: hover 500ms linear infinite;
+}
+
+.box {
+  margin-block: 50vh;
+}
+.boxx {
+  margin-block: 20vh;
+}
+
+
+
+.text {
+  margin-inline: auto;
+  padding-block: 0.2em;
+  max-inline-size: 15ch;
+  text-wrap: balance;
+  background-image: var(--gradient);
+  background-size: 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@supports (animation-timeline: view()) {
   .box {
-    margin-block: 50vh;
+    animation: trigger steps(1) both, fade linear both;
+    animation-timeline: view();
+    animation-range: entry 80% contain 40%;
   }
   .boxx {
-    margin-block: 20vh;
+    animation: trigger steps(1) both, fade linear both;
+    animation-timeline: view();
+    animation-range: entry 80% contain 40%;
   }
 
-  
-  
   .text {
-    margin-inline: auto;
-    padding-block: 0.2em;
-    max-inline-size: 15ch;
-    text-wrap: balance;
-    background-image: var(--gradient);
-    background-size: 400%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    animation: pop-back 300ms var(--ease-bounce-out) forwards;
   }
-  
-  @supports (animation-timeline: view()) {
-    .box {
-      animation: trigger steps(1) both, fade linear both;
-      animation-timeline: view();
-      animation-range: entry 80% contain 40%;
-    }
-    .boxx {
-      animation: trigger steps(1) both, fade linear both;
-      animation-timeline: view();
-      animation-range: entry 80% contain 40%;
-    }
-  
+
+  @container style(--animate: true) {
     .text {
-      animation: pop-back 300ms var(--ease-bounce-out) forwards;
-    }
-  
-    @container style(--animate: true) {
-      .text {
-        animation: pop 600ms var(--ease-elastic) forwards,
-          text-gradient 1s cubic-bezier(0, 0.55, 0.45, 1) forwards;
-      }
+      animation: pop 600ms var(--ease-elastic) forwards,
+        text-gradient 1s cubic-bezier(0, 0.55, 0.45, 1) forwards;
     }
   }
-  
-
-  .input-box {
-   
-    margin-bottom: 1rem;
-  }
-  
-  .input-field {
-    padding: 0.8rem;
-    text-align: center; /* จัดข้อความให้อยู่กลาง */
-    font-size: 1.5rem;
-    width: 50px; /* ขนาดกว้างของช่องกรอกข้อมูล */
-    height: 50px; /* ขนาดสูงของช่องกรอกข้อมูล */
-    border: 2px solid var(--c3);
-    border-radius: 50%; /* ทำให้เป็นวงกลม */
-    background-color: #fff;
-    color: var(--color);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .input-field:focus {
-    border-color: var(--c2);
-    outline: none;
-    box-shadow: 0 0 5px var(--c2);
-  }
-
-  /* การเคลื่อนไหวแสงกระพริบ */
-  @keyframes pulse {
-    0% {
-      transform: translate(-50%, -50%) scale(0.8);
-      opacity: 1;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.1);
-      opacity: 0;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(0.8);
-      opacity: 1;
-    }
-  }
-  
-
-  /* เพิ่มแอนิเมชั่นเมื่อปุ่ม hover */
-  @keyframes hover {
-    from,
-    to {
-      transform: translate(0, calc(var(--hover-offset) * -1));
-    }
-    50% {
-      transform: translate(0, var(--hover-offset));
-    }
-  }
-  
-  .alert {
-    position: fixed; /* ทำให้การแจ้งเตือนคงที่ */
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%); /* จัดกึ่งกลาง */
-    padding: 15px;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-    font-size: 16px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.3s ease-out; /* เพิ่มแอนิเมชั่น */
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-50%) translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-  }
-  
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes trigger {
-    to {
-      --animate: true;
-    }
-  }
-  
-  @keyframes pop {
-    from {
-      scale: var(--scale-start);
-    }
-    to {
-      scale: var(--scale-end);
-    }
-  }
-  
-  @keyframes text-gradient {
-    100% {
-      background-position: 150% center;
-    }
-  }
-  
-  @keyframes pop-back {
-    from {
-      scale: var(--scale-end);
-    }
-    to {
-      color: var(--color);
-      scale: var(--scale-start);
-    }
-  }
-  
-  @keyframes wink {
-    0%,
-    100% {
-      translate: 0 0;
-    }
-    25%,
-    75% {
-      translate: -100% 0;
-    }
-    50% {
-      translate: -200% 0;
-    }
-  }
-  
-  @keyframes wave {
-    50% {
-      rotate: 10deg;
-    }
-  }
-  
-  @keyframes hover {
-    from,
-    to {
-      translate: 0 calc(var(--hover-offset) * -1);
-    }
-    50% {
-      translate: 0 var(--hover-offset);
-    }
-  }
-  
-
-
-  /* /////unlock//////// */
-  .unlock-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
 }
-  /* ปรับสไตล์ของปุ่ม */
-  .unlock-button {
-    background: var(--c3);
-    color: white;
-    font-size: 1.1rem;
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
+
+
+.input-box {
+ 
+  margin-bottom: 1rem;
+}
+
+.input-field {
+  padding: 0.8rem;
+  text-align: center; /* จัดข้อความให้อยู่กลาง */
+  font-size: 1.5rem;
+  width: 50px; /* ขนาดกว้างของช่องกรอกข้อมูล */
+  height: 50px; /* ขนาดสูงของช่องกรอกข้อมูล */
+  border: 2px solid var(--c3);
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  background-color: #fff;
+  color: var(--color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: var(--c2);
+  outline: none;
+  box-shadow: 0 0 5px var(--c2);
+}
+
+/* การเคลื่อนไหวแสงกระพริบ */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
   }
-  
-  
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+}
+
+
+/* เพิ่มแอนิเมชั่นเมื่อปุ่ม hover */
+@keyframes hover {
+  from,
+  to {
+    transform: translate(0, calc(var(--hover-offset) * -1));
+  }
+  50% {
+    transform: translate(0, var(--hover-offset));
+  }
+}
+
+.alert {
+  position: fixed; /* ทำให้การแจ้งเตือนคงที่ */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* จัดกึ่งกลาง */
+  padding: 15px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out; /* เพิ่มแอนิเมชั่น */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes trigger {
+  to {
+    --animate: true;
+  }
+}
+
+@keyframes pop {
+  from {
+    scale: var(--scale-start);
+  }
+  to {
+    scale: var(--scale-end);
+  }
+}
+
+@keyframes text-gradient {
+  100% {
+    background-position: 150% center;
+  }
+}
+
+@keyframes pop-back {
+  from {
+    scale: var(--scale-end);
+  }
+  to {
+    color: var(--color);
+    scale: var(--scale-start);
+  }
+}
+
+@keyframes wink {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  25%,
+  75% {
+    translate: -100% 0;
+  }
+  50% {
+    translate: -200% 0;
+  }
+}
+
+@keyframes wave {
+  50% {
+    rotate: 10deg;
+  }
+}
+
+@keyframes hover {
+  from,
+  to {
+    translate: 0 calc(var(--hover-offset) * -1);
+  }
+  50% {
+    translate: 0 var(--hover-offset);
+  }
+}
+
+
+
+/* /////unlock//////// */
+.unlock-container {
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+/* ปรับสไตล์ของปุ่ม */
+.unlock-button {
+  background: var(--c3);
+  color: white;
+  font-size: 1.1rem;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+
 .unlock-icon {
-  width: 40px; 
-  margin-right: 10px;  
+width: 40px; 
+margin-right: 10px;  
 }
 /* เอฟเฟกต์เมื่อ hover */
 .unlock-button:hover {
-  background: var(--c2);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+background: var(--c2);
+transform: translateY(-3px);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 /* เอฟเฟกต์เมื่อกด */
 .unlock-button:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+transform: translateY(0);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* เอฟเฟกต์แสงกระพริบบนปุ่ม */
 .unlock-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transition: all 0.5s;
-  animation: pulse 2s infinite ease-in-out;
-  transform: translate(-50%, -50%);
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 300%;
+height: 300%;
+background: rgba(255, 255, 255, 0.3);
+border-radius: 50%;
+transition: all 0.5s;
+animation: pulse 2s infinite ease-in-out;
+transform: translate(-50%, -50%);
 }
 .unlock-icon {
-  justify-items: center;
-  
-  width: 30px;
-  height: 30px;
-  margin-right: 5px;
+justify-items: center;
+
+width: 30px;
+height: 30px;
+margin-right: 5px;
 }
-  /* ปรับสไตล์เมื่อปุ่ม disabled */
-  .unlock-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  
+/* ปรับสไตล์เมื่อปุ่ม disabled */
+.unlock-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 
 
 
 
 /* เพิ่มเอฟเฟกต์เฉพาะในโทรศัพท์มือถือ */
 @media screen and (max-width: 768px) {
-  .box:hover {
-    transform: scale(1.1); /* ขยายเมื่อ hover บนหน้าจอเล็ก */
-  }
+.box:hover {
+  transform: scale(1.1); /* ขยายเมื่อ hover บนหน้าจอเล็ก */
+}
 }
 
-  

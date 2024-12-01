@@ -43,7 +43,7 @@ const GiftBox: React.FC<GiftBoxProps> = ({ onClose }) => {
       setShowGif(false);
       setShowVideo(true);
       setShowButton(true);
-    }, 4000); // เปลี่ยนเป็นระยะเวลาที่ตรงกับ GIF จริง
+    }, 5000); // เปลี่ยนเป็นระยะเวลาที่ตรงกับ GIF จริง
 
     return () => clearTimeout(gifTimeout);
   };

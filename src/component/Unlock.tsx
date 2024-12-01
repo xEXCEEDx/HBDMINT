@@ -20,6 +20,7 @@ const UnlockComponent: React.FC<UnlockProps> = ({ onUnlock }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false); // ใช้สำหรับปุ่ม "พอแค่นี้"
   const [isButtonMoving, setIsButtonMoving] = useState(false); // สถานะการขยับปุ่มเมื่อกด
   const [moveCount, setMoveCount] = useState(0); // นับจำนวนการกดปุ่ม
+  const [showQuestionContainer, setShowQuestionContainer] = useState(true); // สถานะสำหรับแสดงคำถาม
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -85,11 +86,12 @@ const UnlockComponent: React.FC<UnlockProps> = ({ onUnlock }) => {
 
   const handleViewMore = () => {
     setShowGiftBox(true); // แสดง GiftBox
+    setShowQuestionContainer(false); // ซ่อนคำถามเมื่อกด "ดูต่อ"
   };
 
   const handleStopMovingButton = () => {
     setIsButtonDisabled(true); // เมื่อกดปุ่ม "พอแค่นี้" จะหยุดการขยับ
-    setIsButtonMoving(true);  // เริ่มขยับปุ่มเมื่อกด
+    setIsButtonMoving(true); // เริ่มขยับปุ่มเมื่อกด
     setMoveCount((prevCount) => prevCount + 1); // เพิ่มการนับการกดปุ่ม
   };
 
@@ -143,41 +145,41 @@ const UnlockComponent: React.FC<UnlockProps> = ({ onUnlock }) => {
             />
 
             {/* ปุ่มที่ปรากฏหลังจากการปลดล็อก */}
-            <div className="button-container">
-  <div className="question-container">
-    อยากได้ของขวัญอีกมั้ย ?
-  </div>
+            {showQuestionContainer && (
+              <div className="button-container">
+                <div className="question-container">
+                  อยากได้ของขวัญอีกมั้ย ?
+                </div>
 
-  <div className="button-group">
-    <button
-      className="continue-button"
-      onClick={handleViewMore}
-    >
-      อยากได้อีก
-    </button>
-    <button
-      className="stop-button"
-      onClick={handleStopMovingButton}
-      style={randomMovement()}
-    >
-      พอแล้ว
-    </button>
-  </div>
-</div>
-
+                <div className="button-group">
+                  <button
+                    className="continue-button"
+                    onClick={handleViewMore}
+                  >
+                    อยากได้อีก
+                  </button>
+                  <button
+                    className="stop-button"
+                    onClick={handleStopMovingButton}
+                    style={randomMovement()}
+                  >
+                    พอแล้ว
+                  </button>
+                </div>
+              </div>
+            )}
           </>
         )}
       </div>
-<div className="giftbox">
-   {/* เมื่อกด "ดูต่อ" จะแสดงกล่องของขวัญ */}
-      {showGiftBox && (
-        <GiftBox
-          onClose={() => console.log("Gift Box Closed")} // ตัวอย่าง: สามารถเพิ่มฟังก์ชันเพิ่มเติมได้
-        />
-      )}
+      <div className="giftbox">
+        {/* เมื่อกด "ดูต่อ" จะแสดงกล่องของขวัญ */}
+        {showGiftBox && (
+          <GiftBox
+            onClose={() => console.log("Gift Box Closed")} // ตัวอย่าง: สามารถเพิ่มฟังก์ชันเพิ่มเติมได้
+          />
+        )}
+      </div>
     </div>
-    </div>
-     
   );
 };
 
