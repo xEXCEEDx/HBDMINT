@@ -61,7 +61,7 @@ const GiftBox: React.FC<GiftBoxProps> = ({ onClose }) => {
       {/* กล่องของขวัญ */}
       {!showGif && !showVideo && (
         <img
-          src="https://i.ibb.co/kGCLg22/gift-box.png"
+          src="giftt.png"
           alt="Gift Box"
           className="gift-image"
           onClick={handleOpenGift}
@@ -71,7 +71,7 @@ const GiftBox: React.FC<GiftBoxProps> = ({ onClose }) => {
       {/* แอนิเมชันเปิดกล่อง */}
       {showGif && (
         <img
-          src="https://i.ibb.co/rQrBG22/Gift-Box-Explode.gif"
+          src="gift.gif"
           alt="Opening Gift"
           className="gif-animation"
           onLoad={() => console.log("GIF loaded")}
