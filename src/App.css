@@ -13,19 +13,32 @@ h5 {
 
 @keyframes christmasColor {
   0% {
-    color: #229f84;
+    color: #ffffff;
   }
   50% {
-    color: #008000;
+    color: #1af302;
   }
   100% {
-    color: #ff0000;
+    color: #ff009d;
   }
 }
 
 /* App.css */
 body {
-  background: linear-gradient(to bottom, #afaef9,#a1f9cd, #b2d8f2); /* พื้นหลังที่ดูนุ่มนวล */
-  background-size: cover;
-  background-repeat: no-repeat;
+	background: linear-gradient(55deg, #ee5252, #ef90f8, #75efff, #3fc6a6);
+	background-size: 400% 400%;
+	animation: gradient 7s ease infinite;
+	/* height: 100vh; */
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

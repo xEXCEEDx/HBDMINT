@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Itim&display=swap');
+
+* {
+  font-family: 'Itim', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+/* กรอบของการ์ด */
+.birthday-card-container {
+  background: #fef8e4;
+  padding: 20px;
+  min-width: 200px;
+  margin: 17rem auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #ff9800;
+  background-image: url('https://www.transparenttextures.com/patterns/diamond.png');
+}
+
+/* การจัดตำแหน่งข้อความ */
+.birthday-card-content {
+  padding: 10px;
+  text-align: center;
+}
+
+/* ชื่อการ์ด */
+.birthday-card-title {
+  font-size: 2.5rem;
+  color: #ff5722;
+  font-family: 'Itim';
+}
+
+/* ปุ่มคลิกเพื่อเปิดข้อความ */
+.toggle-button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+  background-color: #ff9800;
+}
+
+/* ข้อความในการ์ด */
+.birthday-card-message {
+  font-size: 1.5rem;
+  color: #4d4d4d;
+  line-height: 1.5;
+  font-family: 'Itim';
+  margin-top: 15px;
+  padding: 0 10px;
+  opacity: 0;
+  animation: fadeIn 5s forwards;  /* ทำให้ข้อความขึ้นช้า */
+}
+
+/* เพิ่มลูกเล่นดอกไม้ตกแต่ง */
+.birthday-card-container::before {
+  content: "☃️🎄";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+}
+
+.birthday-card-container::after {
+  content: "🎄❄️";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+}
+
+/* animation: การขึ้นช้าๆ ของข้อความ */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media (max-width: 480px) {
+  .birthday-card-container {
+    padding: 15px;
+    margin: 5rem auto;
+  }
+
+  .birthday-card-title {
+    font-size: 1.5rem;
+  }
+
+  .toggle-button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .birthday-card-message {
+    font-size: 0.9rem;
+    padding: 0 5px;
+  }
+
+  .birthday-card-container::before,
+  .birthday-card-container::after {
+    font-size: 1.2rem;
+  }
+}

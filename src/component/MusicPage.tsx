@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Music.css";
+import "./css/Music.css";
 
 const Music: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -32,8 +32,16 @@ const Music: React.FC = () => {
     };
   }, [hasClicked]);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.1; // ปรับความดังของเสียงให้เหลือ 20%
+      audioRef.current.loop = true; // เล่นเพลงใน loop
+      audioRef.current.play();
+    }
+  }, []);
+
   return (
-    <div>
+    <div className="headmusic">
       <span onClick={togglePlayPause} className="music-toggle">
         {isPlaying ? "Click to pause music ♫" : "Click to play music ♫"}
       </span>
@@ -47,7 +55,7 @@ const Music: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* <audio ref={audioRef} src="/audio/HBD.mp3" /> */}
+      <audio ref={audioRef} src="/audio/HBD.mp3" />
     </div>
   );
 };

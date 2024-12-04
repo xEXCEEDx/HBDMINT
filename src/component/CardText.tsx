@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Card.css";
+import "./css/Card.css";
 
 interface CardProps {
   title: string;
@@ -17,11 +17,8 @@ const CardText: React.FC<CardProps> = ({ title, message }) => {
     <div className="birthday-card-container">
       <div className="birthday-card-content">
         <h6 className="birthday-card-title">สุขสันต์วันเกิดนะคะ🎂</h6>
-        <button
-          className="toggle-button"
-          onClick={toggleMessageVisibility}
-        >
-          คลิกเพื่อเปิดอ่าน
+        <button className="toggle-button" onClick={toggleMessageVisibility}>
+          {isMessageVisible ? "ปิดข้อความ" : "คลิกเพื่อเปิดอ่าน"}
         </button>
         {isMessageVisible && (
           <p className="birthday-card-message">{message}</p>

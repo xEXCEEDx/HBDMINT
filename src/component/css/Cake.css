@@ -1,0 +1,151 @@
+
+#cake {
+  display: block;
+  position: relative;
+  margin: -10em auto 0 auto;
+  
+}
+
+/* ============================================== Candle
+*/
+
+.velas {
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 228px;
+  left: 50%;
+  margin-left: -2.4px;
+  margin-top: 120.33333333px;
+  width: 10px;
+  height: 80px;
+  transform: translateY(-800px);
+  backface-visibility: hidden;
+  animation: in 1000ms 6s ease-out forwards;
+}
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+.velas:after {
+  top: 25%;
+  left: 0;
+}
+.velas:before {
+  top: 45%;
+  left: 0;
+}
+
+/* ============================================== Fire
+*/
+
+.fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -2.6px;
+  width: 6.66666667px;
+  height: 18px;
+}
+.fuego:nth-child(1) {
+  animation: fuego 2s 6.5s infinite;
+}
+.fuego:nth-child(2) {
+  animation: fuego 1.5s 6.5s infinite;
+}
+.fuego:nth-child(3) {
+  animation: fuego 1s 6.5s infinite;
+}
+.fuego:nth-child(4) {
+  animation: fuego 0.5s 6.5s infinite;
+}
+.fuego:nth-child(5) {
+  animation: fuego 0.2s 6.5s infinite;
+}
+
+/* ============================================== Animation Fire
+*/
+
+@keyframes fuego {
+  0%, 100% {
+    background: rgba(254, 248, 97, 0.5);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+
+@keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.textcake {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: #8b6a60;
+    padding: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .textcake h3 {
+    font-size: 2.5em;
+    color: #d75a92; /* สีที่เด่นขึ้น */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* เงาที่ชัดเจน */
+    margin-bottom: 10px;
+    font-weight: bold; /* เพิ่มความหนาของฟอนต์ */
+  }
+  
+  .textcake p {
+    font-size: 1.5em;
+    color: #5a4b6e; /* สีที่ตัดกัน */
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* เงาที่เบาลง */
+    letter-spacing: 1px; /* การเว้นระยะระหว่างตัวอักษร */
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 768px) {
+    #cake {
+        transform: translateX(-100px); /* ขยับไปทางซ้าย 20px */
+    }
+    .textcake {
+        padding: 15px; /* ลด padding สำหรับหน้าจอเล็ก */
+    }
+
+    .textcake h3 {
+        font-size: 1.8rem; /* ลดขนาดฟอนต์ */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* ลดขนาดเงา */
+    }
+
+    .textcake p {
+        font-size: 1rem; /* ลดขนาดฟอนต์ */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* ลดขนาดเงา */
+    }
+    .velas {
+    
+        margin-top: -50.33333333px;
+
+  }
+  #cake{
+    margin: -20em auto 0 auto;
+  }
+}

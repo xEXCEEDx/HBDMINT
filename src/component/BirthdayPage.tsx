@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import "./Birthday.css";
-import Snowfall from "react-snowfall";
-import UnlockComponent from "./Unlock";
 import Swal from "sweetalert2";
+import "./css/Birthday.css";
+import Snowfall from "react-snowfall";
 
-const BirthdayUnlockPage: React.FC = () => {
+interface BirthdayUnlockPageProps {
+  onUnlock: () => void;
+}
+
+const BirthdayUnlockPage: React.FC<BirthdayUnlockPageProps> = ({ onUnlock }) => {
   const [inputValues, setInputValues] = useState({
     input1: "",
     input2: "",
@@ -12,7 +15,7 @@ const BirthdayUnlockPage: React.FC = () => {
     input4: "",
   });
 
-  const [isUnlocked, setIsUnlocked] = useState(false); // เช็คสถานะของการ Unlock
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -23,30 +26,60 @@ const BirthdayUnlockPage: React.FC = () => {
 
     if (value.length === 1) {
       const nextInputId = `input-${parseInt(field.slice(-1)) + 1}`;
-      const nextInput = document.getElementById(
-        nextInputId
-      ) as HTMLInputElement;
+      const nextInput = document.getElementById(nextInputId) as HTMLInputElement;
       if (nextInput) nextInput.focus();
     }
+  };
 
-    // ตรวจสอบการ Unlock
+  const handleUnlock = () => {
     if (
       inputValues.input1.toLowerCase() === "m" &&
       inputValues.input2.toLowerCase() === "i" &&
       inputValues.input3.toLowerCase() === "n" &&
       inputValues.input4.toLowerCase() === "t"
     ) {
-      setIsUnlocked(true);
+      Swal.fire({
+        title: "เก่งมากก ถูกต้องแล้ว",
+        text: "Happy Birthday mint!",
+        imageUrl:
+          "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmNrY2R2NGJwaGE3bDZhd2t3a2E1bTVqbWZ3eWpqbzZra2ViaXVuaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l9fVX1zfHYGd4rIk47/giphy.gif",
+        imageWidth: 100,
+        imageHeight: 100,
+        imageAlt: "Gift Icon",
+        confirmButtonText: "Yay!",
+        timer: 2000,
+        timerProgressBar: true,
+      }).then(() => {
+        setIsUnlocked(true);
+        onUnlock(); // Call the callback function to notify that unlocking is complete
+      });
     } else {
-      setIsUnlocked(false);
+      Swal.fire({
+        title: "โอ้ย ไม่ใช่",
+        text: "ลองใส่ใหม่!",
+        imageUrl:
+          "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDA0NWM1c2JyNHZlMTk3YzU5YWUwdGgwM2FuNHk1M2FxenJ1NWd0YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nR4L10XlJcSeQ/giphy.gif",
+        imageWidth: 100,
+        imageHeight: 100,
+        imageAlt: "Angry Icon",
+        confirmButtonText: "NOOOO!",
+        timer: 2000,
+        timerProgressBar: true,
+      }).then(() => {
+        setInputValues({
+          input1: "",
+          input2: "",
+          input3: "",
+          input4: "",
+        });
+        const firstInput = document.getElementById("input-1") as HTMLInputElement;
+        if (firstInput) firstInput.focus();
+      });
     }
-  };
-  const handleUnlock = () => {
-    setIsUnlocked(true);
   };
 
   return (
-    <div className="App">
+    <div className="App birthday-page">
       {/* Snowfall component */}
       <Snowfall />
 
@@ -83,7 +116,33 @@ const BirthdayUnlockPage: React.FC = () => {
       <div className="boxx">
         <p className="text">Unlock to read</p>
         <h5>(กรอกคำตอบให้ถูกนะ)</h5>
-        <UnlockComponent onUnlock={handleUnlock} />
+        <div className="input-box">
+          {["input1", "input2", "input3", "input4"].map((field, index) => (
+            <input
+              key={index}
+              id={`input-${index + 1}`}
+              type="text"
+              value={inputValues[field as keyof typeof inputValues]}
+              onChange={(e) => handleInputChange(e, field)}
+              className="input-field"
+              maxLength={1}
+            />
+          ))}
+        </div>
+        <button
+          className="unlock-button"
+          onClick={handleUnlock}
+          disabled={!(inputValues.input1 && inputValues.input2 && inputValues.input3 && inputValues.input4)}
+        >
+          <div className="unlock-container">
+            <img
+              className="unlock-icon"
+              src="https://cdn-icons-png.flaticon.com/512/5951/5951623.png"
+              alt="Unlock Icon"
+            />
+            <h6>Unlock gift</h6>
+          </div>
+        </button>
       </div>
 
       <div className="boxx">
